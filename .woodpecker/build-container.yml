@@ -1,0 +1,22 @@
+---
+when:
+  - event: [ push , manual ]
+    branch: main
+  - event: [ pull_request ]
+
+steps:
+  - image: woodpeckerci/plugin-docker-buildx:latest
+    name: dryrun
+    settings:
+      auto_tag: true
+      dockerfile: Dockerfile
+      dry_run: true
+      http_proxy:
+        from_secret: ci_http_proxy
+      https_proxy:
+        from_secret: ci_http_proxy
+      platforms: linux/amd64
+      pull_image: false
+      repo: opencloudeu/radicale,quay.io/opencloudeu/radicale
+    when:
+      - event: pull_request

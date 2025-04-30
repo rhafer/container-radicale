@@ -3,7 +3,7 @@
 FROM python:3-alpine AS builder
 
 # Version of Radicale (e.g. v3)
-ARG VERSION=master
+ARG VERSION=v3.5.1
 
 # Optional dependencies (e.g. bcrypt or ldap)
 ARG DEPENDENCIES=bcrypt
