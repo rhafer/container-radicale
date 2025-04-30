@@ -8,7 +8,14 @@
       "customType": "regex",
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>.*?))?\\nARG VERSION=(?<currentValue>.*)"
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\nARG VERSION=(?<currentValue>.*)"
+      ]
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^.woodpecker/.*yaml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n\\stag: (?<currentValue>.*)"
       ]
     }
   ]
