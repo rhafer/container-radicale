@@ -21,3 +21,31 @@ steps:
       repo: opencloudeu/radicale,quay.io/opencloudeu/radicale
     when:
       - event: pull_request
+  
+  - image: woodpeckerci/plugin-docker-buildx:latest
+    name: build-and-push
+    settings:
+# renovate: datasource=github-releases depName=Kozea/Radicale
+      tag: 3.5.2
+      dockerfile: Dockerfile
+      http_proxy:
+        from_secret: ci_http_proxy
+      https_proxy:
+        from_secret: ci_http_proxy
+      platforms: linux/amd64
+      pull_image: false
+      logins:
+        - registry: https://index.docker.io/v1/
+          username:
+            from_secret: docker_username
+          password:
+            from_secret: docker_password
+        - registry: https://quay.io
+          username:
+            from_secret: quay_username
+          password:
+            from_secret: quay_password
+      repo: opencloudeu/radicale,quay.io/opencloudeu/radicale
+    when:
+      - event: [ push , manual ]
+        branch: main
