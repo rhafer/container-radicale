@@ -13,7 +13,7 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["^.woodpecker/.*yaml$"],
+      "fileMatch": ["^.woodpecker/.*yml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n\\stag: (?<currentValue>.*)"
       ]
