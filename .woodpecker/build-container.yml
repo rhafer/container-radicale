@@ -9,7 +9,7 @@ steps:
     name: dryrun
     settings:
 # renovate: datasource=github-releases depName=Kozea/Radicale
-      tag: 3.5.1
+      tag: v3.5.1
       dockerfile: Dockerfile
       dry_run: true
       http_proxy:
