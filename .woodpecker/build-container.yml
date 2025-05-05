@@ -53,3 +53,32 @@ steps:
     when:
       - event: [ push , manual ]
         branch: main
+
+  - image: chko/docker-pushrm:1
+    name: push-readme-dockerhub
+    environment:
+      DOCKER_USER:
+        from_secret: docker_username
+      DOCKER_PASS:
+        from_secret: docker_password
+      PUSHRM_TARGET: opencloudeu/radicale
+      PUSHRM_SHORT: Docker images for Radicale
+      PUSHRM_FILE: README.md
+    depends_on: build-and-push
+    when:
+      - event: [ push , manual ]
+        branch: main
+    
+  - image: chko/docker-pushrm:1
+    name: push-readme-quayio
+    environment:
+      APIKEY__QUAY_IO:
+        from_secret: quay_apikey
+      PUSHRM_TARGET: quay.io/opencloudeu/radicale
+      PUSHRM_SHORT: Docker images for Radicale
+      PUSHRM_FILE: README.md
+    depends_on: build-and-push
+    when:
+      - event: [ push , manual ]
+        branch: main
+
