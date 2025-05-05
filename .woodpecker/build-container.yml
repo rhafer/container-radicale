@@ -9,7 +9,9 @@ steps:
     name: dryrun
     settings:
 # renovate: datasource=github-releases depName=Kozea/Radicale
-      tag: 3.5.2
+      tags:
+        - 3.5.2
+        - latest
       dockerfile: Dockerfile
       dry_run: true
       http_proxy:
@@ -26,7 +28,9 @@ steps:
     name: build-and-push
     settings:
 # renovate: datasource=github-releases depName=Kozea/Radicale
-      tag: 3.5.2
+      tags:
+        - 3.5.2
+        - latest
       dockerfile: Dockerfile
       http_proxy:
         from_secret: ci_http_proxy
